@@ -30,6 +30,7 @@ namespace MF.MyAirport.EF.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CodeIata")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("DateCreation")
@@ -41,7 +42,7 @@ namespace MF.MyAirport.EF.Migrations
                     b.Property<string>("Escale")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("Prioritaire")
+                    b.Property<bool?>("Prioritaire")
                         .HasColumnType("bit");
 
                     b.Property<string>("Ssur")
@@ -68,21 +69,23 @@ namespace MF.MyAirport.EF.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Cie")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Des")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Dhc")
+                    b.Property<DateTime?>("Dhc")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Imm")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Lig")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Pax")
+                    b.Property<int?>("Pax")
                         .HasColumnType("int");
 
                     b.Property<string>("Pkg")
@@ -96,7 +99,7 @@ namespace MF.MyAirport.EF.Migrations
             modelBuilder.Entity("MF.MyAirport.EF.Bagage", b =>
                 {
                     b.HasOne("MyAirport.EF.Vol", "Vol")
-                        .WithMany()
+                        .WithMany("Bagages")
                         .HasForeignKey("VolId");
                 });
 #pragma warning restore 612, 618

@@ -62,17 +62,24 @@ namespace MF.MyAirport.ConsoleApp
                 }
                 Console.ReadLine();
 
+                
+
+
                 // Update
                 Console.WriteLine($"Le bagage {b1.BagageId} est modifié pour être rattaché au vol {v1.VolId} => {v1.Cie}{v1.Lig}");
                 b1.VolId = v1.VolId;
                 db.SaveChanges();
                 Console.ReadLine();
 
+                Console.WriteLine($"Il y a {v1.Bagages.Count}  bagages sur le vol {v1.VolId}");
+
                 // Delete vol et bagages du vol
                 Console.WriteLine($"Suppression du vol {v1.VolId} => {v1.Cie}{v1.Lig}");
                 db.Remove(v1);
                 db.SaveChanges();
                 Console.ReadLine();
+
+
             }
         }
     }
