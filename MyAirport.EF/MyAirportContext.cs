@@ -10,17 +10,19 @@ namespace MF.MyAirport.EF
 {
     public class MyAirportContext : DbContext
     {
-        public static readonly ILoggerFactory MyAirportLoggerFactory = LoggerFactory.Create(builder => { builder.AddConsole(); });
-        public DbSet<Vol> Vols { get; set; }
-        public DbSet<Bagage> Bagages { get; set; }
+       // public static readonly ILoggerFactory MyAirportLoggerFactory = LoggerFactory.Create(builder => { builder.AddConsole(); });
+        
+        public MyAirportContext(DbContextOptions<MyAirportContext> options) : base(options) { }
+        public DbSet<Vol>? Vols { get; set; }
+        public DbSet<Bagage>? Bagages { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
                 @"Server=(localdb)\mssqllocaldb;Database=MyAirportContext;Integrated Security=True");
-            optionsBuilder.UseLoggerFactory(MyAirportLoggerFactory);
+            //optionsBuilder.UseLoggerFactory(MyAirportLoggerFactory);
 
-        }
+        }*/
     }
 
 }

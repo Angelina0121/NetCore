@@ -1,5 +1,8 @@
 ﻿using MF.MyAirport.EF;
 using MyAirport.EF;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 
@@ -7,10 +10,19 @@ namespace MF.MyAirport.ConsoleApp
 {
     class Program
     {
+        public static readonly ILoggerFactory MyAirportLoggerFactory = LoggerFactory.Create(builder => { builder.AddConsole(); });
         static void Main(string[] args)
         {
+
+            var optionsBuilder = new DbContextOptionsBuilder<MyAirportContext>();
+
+            optionsBuilder.UseLoggerFactory(MyAirportLoggerFactory);
+            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["MyAirportContext"].ConnectionString);
+            
+
             System.Console.WriteLine("MyAirport project bonjour!!");
-            using (var db = new MyAirportContext())
+            using (var db = new MyAirportContext(optionsBuilder.Options))
+            //using (var db = new MyAirportContext())
             {
                 // Create
                 Console.WriteLine("Création du vol LH1232");
@@ -25,6 +37,7 @@ namespace MF.MyAirport.ConsoleApp
                     Pax = 238
                 };
                 db.Add(v1);
+                db.SaveChanges();
 
                 Console.WriteLine("Creation vol SQ333");
                 Vol v2 = new Vol
