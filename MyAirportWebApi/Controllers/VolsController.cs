@@ -28,19 +28,25 @@ namespace MyAirportWebApi
             return await _context.Vols.ToListAsync();
         }
 
-        // GET: api/Vols/5
+        // GET: api/Vols/5? bool bagages
         [HttpGet("{id}")]
-        public async Task<ActionResult<Vol>> GetVol(int id)
+        public async Task<ActionResult<Vol>> GetVol(int id,
+            [FromQuery] bool bagages = false)
         {
-            var vol = await _context.Vols.FindAsync(id);
+            Vol volsRes;
+            if (bagages)
+                volsRes = await _context.Vols.Include(v => v.Bagages).FirstAsync(volRes => volRes.VolId == id);
+            else
+                volsRes = await _context.Vols.FindAsync(id);
 
-            if (vol == null)
+            if (volsRes == null)
             {
                 return NotFound();
             }
+            return volsRes;
 
-            return vol;
         }
+           
 
         // PUT: api/Vols/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
@@ -87,6 +93,11 @@ namespace MyAirportWebApi
         }
 
         // DELETE: api/Vols/5
+        /// <summary>
+        /// Suppresion du vol grâce à son Id
+        /// </summary>
+        /// <param name="id">Identifiant du vol à supprimer</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<Vol>> DeleteVol(int id)
         {

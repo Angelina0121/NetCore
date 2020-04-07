@@ -4,14 +4,16 @@ using MF.MyAirport.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MF.MyAirport.EF.Migrations
 {
     [DbContext(typeof(MyAirportContext))]
-    partial class MyAirportContextModelSnapshot : ModelSnapshot
+    [Migration("20200331111230_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,7 +77,7 @@ namespace MF.MyAirport.EF.Migrations
                     b.Property<string>("Des")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("Dhc")
+                    b.Property<DateTime?>("Dhc")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Imm")

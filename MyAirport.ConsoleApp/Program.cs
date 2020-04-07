@@ -18,7 +18,9 @@ namespace MF.MyAirport.ConsoleApp
 
             optionsBuilder.UseLoggerFactory(MyAirportLoggerFactory);
             optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["MyAirportContext"].ConnectionString);
+
             
+
 
             System.Console.WriteLine("MyAirport project bonjour!!");
             using (var db = new MyAirportContext(optionsBuilder.Options))
@@ -26,13 +28,10 @@ namespace MF.MyAirport.ConsoleApp
             {
                 // Create
                 Console.WriteLine("Création du vol LH1232");
-                Vol v1 = new Vol
+                Vol v1 = new Vol("LH","1232", Convert.ToDateTime("14/01/2020 16:45"))
                 {
-                    Cie = "LH",
                     Des = "BKK",
-                    Dhc = Convert.ToDateTime("14/01/2020 16:45"),
                     Imm = "RZ62",
-                    Lig = "1232",
                     Pkg = "R52",
                     Pax = 238
                 };
@@ -40,24 +39,19 @@ namespace MF.MyAirport.ConsoleApp
                 db.SaveChanges();
 
                 Console.WriteLine("Creation vol SQ333");
-                Vol v2 = new Vol
+                Vol v2 = new Vol("SK", "333", Convert.ToDateTime("14/01/2020 18:20"))
                 {
-                    Cie = "SK",
                     Des = "CDG",
-                    Dhc = Convert.ToDateTime("14/01/2020 18:20"),
                     Imm = "TG43",
-                    Lig = "333",
                     Pkg = "R51",
                     Pax = 423
                 };
                 db.Add(v2);
 
                 Console.WriteLine("creation du bagage 012387364501");
-                Bagage b1 = new Bagage
+                Bagage b1 = new Bagage("012387364501", Convert.ToDateTime("14/01/2020 12:52"))
                 {
                     Classe = "Y",
-                    CodeIata = "012387364501",
-                    DateCreation = Convert.ToDateTime("14/01/2020 12:52"),
                     Destination = "BEG",
                 };
                 db.Add(b1);
@@ -84,7 +78,7 @@ namespace MF.MyAirport.ConsoleApp
                 db.SaveChanges();
                 Console.ReadLine();
 
-                Console.WriteLine($"Il y a {v1.Bagages.Count}  bagages sur le vol {v1.VolId}");
+                Console.WriteLine($"Il y a {v1.Bagages.Count()}  bagages sur le vol {v1.VolId}");
 
                 // Delete vol et bagages du vol
                 Console.WriteLine($"Suppression du vol {v1.VolId} => {v1.Cie}{v1.Lig}");
