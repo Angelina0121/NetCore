@@ -16,6 +16,8 @@ namespace MyAirport.EF
         public int? Pax { get; set; }
         public IEnumerable<Bagage> Bagages { get; set; }
 
+        public Vol() { }
+
         public Vol(string cie, string lig, DateTime dhc)
         {
             Cie = cie;

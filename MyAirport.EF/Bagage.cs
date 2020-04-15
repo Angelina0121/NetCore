@@ -39,6 +39,8 @@ namespace MF.MyAirport.EF
         public string? Destination { get; set; }
         public string? Escale { get; set; }
 
+        public Bagage() { }
+
         public Bagage(string codeIata, DateTime dateCreation)
         {
             CodeIata = codeIata;
