@@ -3,8 +3,15 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MF.MyAirport.EF.Migrations
 {
+    /// <summary>
+    /// Classe gérant les migrations
+    /// </summary>
     public partial class tp3_terminé : Migration
     {
+        /// <summary>
+        /// Méthode en lien avec les migrations
+        /// </summary>
+        /// <param name="migrationBuilder"></param>
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -58,7 +65,10 @@ namespace MF.MyAirport.EF.Migrations
                 table: "Bagages",
                 column: "VolId");
         }
-
+        /// <summary>
+        /// Méthode en lien avec les migrations
+        /// </summary>
+        /// <param name="migrationBuilder"></param>
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

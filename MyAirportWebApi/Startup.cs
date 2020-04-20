@@ -12,7 +12,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MF.MyAirport.EF;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Builder;
 using Newtonsoft.Json;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -20,6 +19,7 @@ using System.IO;
 
 namespace MF.MyAirport.WebApi
 {
+
     public class Startup
     {
         public Startup(IConfiguration configuration)

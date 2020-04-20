@@ -13,6 +13,10 @@ namespace MF.MyAirport.EF.Migrations
     [Migration("20200331111230_test")]
     partial class test
     {
+        /// <summary>
+        /// Méthode en lien avec les migrations 
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618

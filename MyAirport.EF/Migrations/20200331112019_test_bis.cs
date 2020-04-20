@@ -3,8 +3,15 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MF.MyAirport.EF.Migrations
 {
+    /// <summary>
+    /// Classe gérant les migrations
+    /// </summary>
     public partial class test_bis : Migration
     {
+        /// <summary>
+        /// Méthode en lien avec les migrations
+        /// </summary>
+        /// <param name="migrationBuilder"></param>
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<DateTime>(
@@ -15,7 +22,10 @@ namespace MF.MyAirport.EF.Migrations
                 oldType: "datetime2",
                 oldNullable: true);
         }
-
+        /// <summary>
+        /// Méthode en lien avec les migrations
+        /// </summary>
+        /// <param name="migrationBuilder"></param>
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AlterColumn<DateTime>(

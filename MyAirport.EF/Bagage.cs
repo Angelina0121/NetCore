@@ -32,15 +32,40 @@ namespace MF.MyAirport.EF
         /// Propriété de navigation
         /// </summary>
         public Vol? Vol { get; set; }
+
+        /// <summary>
+        /// Classe du passager (1ère, éco, business)
+        /// </summary>
         public string? Classe { get; set; }
+        /// <summary>
+        /// Définit si le passager est considéré prioritaire lors de l'embarquement
+        /// </summary>
         public bool? Prioritaire { get; set; }
+        /// <summary>
+        /// Statut du bagage
+        /// </summary>
         public string? Sta { get; set; }
+        /// <summary>
+        /// ?
+        /// </summary>
         public string? Ssur { get; set; }
+        /// <summary>
+        /// Lieu de destination du vol
+        /// </summary>
         public string? Destination { get; set; }
+        /// <summary>
+        /// Lieu de l'escale, s'il y en a une
+        /// </summary>
         public string? Escale { get; set; }
 
+        /// <summary>
+        /// Création d'un bagage vide afin de pouvoir mettre les bagaes à null lors de la création d'un vol
+        /// </summary>
         public Bagage() { }
 
+        /// <summary>
+        /// Création d'un bagage
+        /// </summary>
         public Bagage(string codeIata, DateTime dateCreation)
         {
             CodeIata = codeIata;

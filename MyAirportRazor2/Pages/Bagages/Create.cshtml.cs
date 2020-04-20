@@ -12,8 +12,6 @@ namespace MyAirport.Razor
 {
     public class CreateModelBagage : BagageModel
     {
-        private readonly MF.MyAirport.EF.MyAirportContext _context;
-
         public CreateModelBagage(MF.MyAirport.EF.MyAirportContext context) : base(context) { }
 
         public IActionResult OnGet()

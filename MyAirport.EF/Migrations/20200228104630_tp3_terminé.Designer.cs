@@ -13,6 +13,10 @@ namespace MF.MyAirport.EF.Migrations
     [Migration("20200228104630_tp3_terminé")]
     partial class tp3_terminé
     {
+        /// <summary>
+        /// Classe en lien avec les migrations
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
